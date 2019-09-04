@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.zhangsan.senior1.week1.dao.MovieDao">
+   <insert id="add">
+    INSERT INTO `test`.`movie`(`id`, `name`, `introduce`, `actor`, `begin_date`) VALUES (null, #{name}, #{introduce}, #{actor}, #{beginDate})
+   </insert>
+  <!--  <insert id="addmoviecategory">
+    insert into movie_category values(#{movie_id},#{category_id})
+   </insert> -->
+   <insert id="addmoviecategory">
+    INSERT INTO `test`.`movie_category`(`movie_id`, `category_id`) VALUES (#{movie_id}, #{category_id})
+   </insert>
+   <select id="list" resultType="map">
+ SELECT
+category.id,
+
+movie_category.movie_id,
+movie_category.category_id,
+movie.id,
+movie.`name`,
+movie.introduce,
+movie.actor,
+movie.begin_date
+FROM
+category
+INNER JOIN movie_category ON category.id = movie_category.category_id
+INNER JOIN movie ON movie.id = movie_category.movie_id
+
+<where>
+<if test="mohu1!=null and mohu1!=''">
+ and movie.`name` like concat('%',#{mohu1},'%')
+</if>
+</where>
+   </select>
+   <delete id="dels">
+    delete from movie where id in(#{ids});
+   </delete>
+  </mapper>
