@@ -210,7 +210,25 @@
                 <source>1.8</source>    
                 <target>1.8</target>    
             </configuration>    
-        </plugin>  
+        </plugin> 
+        <!--jetty插件  --> 
+        <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.4.2.v20170220</version>
+        <configuration>
+        <scanIntervalSeconds>
+        300
+        </scanIntervalSeconds>
+        <httpConnector>
+        <port>8082</port>
+        </httpConnector>
+        <webApp>
+        <contextPath>/test</contextPath>
+        </webApp>
+        <stopPort>9966</stopPort>
+        </configuration>
+        </plugin>
   	</plugins>
   </build>
 	
