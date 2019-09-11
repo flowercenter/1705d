@@ -26,8 +26,9 @@ public class DateUtilTest {
 	//	Calendar target=Calendar.getInstance(parse.toLocaleString())
 	//	DateUtil.getAge(target)
 	}
-	@Test
-	public void test2() {
-		
-	}
+	/*
+	 * @Test public void test2() {
+	 * 
+	 * }
+	 */
 }
